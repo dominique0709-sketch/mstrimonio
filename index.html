@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación Boda</title>
+<style>
+body{
+  margin:0;
+  font-family:'Georgia', serif;
+  background:#fefaf5;
+  color:#4a4a4a;
+  text-align:center;
+}
+.section{min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:40px 20px;}
+.hidden{display:none;}
+
+/* ===== Corazón elegante ===== */
+.heart{
+  width:80px; height:80px;
+  position:relative;
+  transform:rotate(-45deg);
+  margin-bottom:20px;
+  animation: pulse 1s ease-in-out 3;
+}
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:80px; height:80px;
+  background:#d4b89f;
+  border-radius:50%;
+}
+.heart::before{top:-40px; left:0;}
+.heart::after{left:40px; top:0;}
+@keyframes pulse{
+  0%{transform:rotate(-45deg) scale(1);}
+  50%{transform:rotate(-45deg) scale(1.3);}
+  100%{transform:rotate(-45deg) scale(1);}
+}
+
+/* Carta inicial */
+.card{
+  background:#fff9f3;
+  padding:50px 30px;
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  max-width:380px;
+  text-align:center;
+  position:relative;
+  margin-top:20px;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  top:-15px; left:-15px;
+  width:calc(100% + 30px);
+  height:calc(100% + 30px);
+  border:2px solid #d4b89f;
+  border-radius:25px;
+}
+.button{
+  margin-top:25px;
+  padding:12px 30px;
+  border:none;
+  background:#d4b89f;
+  color:white;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+}
+.button:hover{background:#c8a68b;}
+
+/* Hero fondo */
+.hero{
+  background:url('https://via.placeholder.com/800x1200') center/cover no-repeat;
+  position:relative;
+  color:white;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.25);
+}
+.hero-content{position:relative; z-index:2;}
+.countdown{font-size:28px; margin-top:15px; letter-spacing:2px;}
+
+/* Contenido completo */
+.info{
+  padding:60px 20px;
+  background:#ffffff;
+  max-width:650px;
+  margin:0 auto;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  text-align:left;
+}
+h2{
+  font-weight:normal;
+  letter-spacing:2px;
+  margin-top:40px;
+  text-align:center;
+}
+.gallery img{
+  width:85%;
+  max-width:320px;
+  border-radius:15px;
+  margin:15px 0;
+}
+input, textarea{
+  width:90%;
+  padding:12px;
+  margin:12px 0;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-family:inherit;
+}
+.option-btn{
+  display:block;
+  margin:10px auto;
+  width:85%;
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  background:#d4b89f;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+}
+.small{
+  font-size:14px;
+  margin-top:40px;
+  opacity:0.8;
+}
+.separator{
+  height:2px;
+  width:80px;
+  background:#d4b89f;
+  margin:30px auto;
+  border-radius:5px;
+}
+.decor{
+  text-align:center;
+  margin:20px 0;
+  color:#d4b89f;
+  font-size:24px;
+}
+</style>
+</head>
+<body>
+
+<!-- Corazón inicial -->
+<div class="section" id="heartSection">
+  <div class="heart"></div>
+  <p>Invitación Especial</p>
+</div>
+
+<!-- Carta inicial -->
+<div class="section hidden" id="cartaSection">
+  <div class="card">
+    <h2>Invitación Exclusiva</h2>
+    <p>Esta invitación es para ti, [Nombre]</p>
+    <div class="decor">🌿💍🌿</div>
+    <button class="button" onclick="abrirInvitacion()">Abrir</button>
+  </div>
+</div>
+
+<!-- Hero y contenido -->
+<div class="section hero hidden" id="hero">
+  <div class="hero-content">
+    <h1>Boda de Johanna & Paolo</h1>
+    <div class="countdown" id="countdown"></div>
+  </div>
+</div>
+
+<div class="info hidden" id="contenido">
+
+<h2>Ceremonia</h2>
+<p>Sábado XX de Noviembre</p>
+<p>Salón de Eventos XXXX</p>
+<a href="https://www.google.com/maps" target="_blank">
+<button class="button">Cómo llegar</button>
+</a>
+
+<div class="separator"></div>
+
+<h2>Retrato de nuestro amor</h2>
+<div class="gallery">
+<img src="https://via.placeholder.com/300">
+<img src="https://via.placeholder.com/300">
+</div>
+
+<div class="separator"></div>
+
+<h2>Música</h2>
+<p>¿Cuál es la canción que no puede faltar?</p>
+<input type="text" placeholder="Sugerir canción">
+
+<div class="separator"></div>
+
+<h2>Vestimenta</h2>
+<p>Elegante, tonos beige, aire libre</p>
+
+<div class="separator"></div>
+
+<h2>Tips y notas</h2>
+<p>
+• Ser puntuales<br>
+• Confirmar asistencia antes de la fecha<br>
+• Llevar abrigo para disfrutar de los espacios exteriores
+</p>
+
+<div class="separator"></div>
+
+<h2>Regalos</h2>
+<p>Para quienes deseen hacer un regalo en efectivo, contaremos con una cuenta bancaria:</p>
+<p>Datos: XXX XXXX</p>
+
+<div class="separator"></div>
+
+<h2>Confirmación</h2>
+<button class="option-btn">Sí, confirmo</button>
+<button class="option-btn">No puedo asistir</button>
+<textarea placeholder="Información importante (ej: soy vegetariano)"></textarea>
+
+<p class="small">Con amor, Johanna & Paolo</p>
+</div>
+
+<script>
+// Mostrar carta después del corazón
+setTimeout(function(){
+  document.getElementById("heartSection").classList.add("hidden");
+  document.getElementById("cartaSection").classList.remove("hidden");
+}, 3000); // corazón late 3 veces
+
+var fechaEvento = new Date("2026-11-20 18:00:00").getTime();
+
+// Abrir invitación
+function abrirInvitacion(){
+  document.getElementById("cartaSection").classList.add("hidden");
+  document.getElementById("hero").classList.remove("hidden");
+  document.getElementById("contenido").classList.remove("hidden");
+}
+
+// Contador regresivo
+setInterval(function(){
+  var ahora = new Date().getTime();
+  var distancia = fechaEvento - ahora;
+  var dias = Math.floor(distancia / (1000*60*60*24));
+  document.getElementById("countdown").innerHTML = distancia>0 ? dias + " días" : "¡Es hoy!";
+},1000);
+</script>
+
+</body>
+</html>
